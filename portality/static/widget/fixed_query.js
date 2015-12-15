@@ -25,7 +25,8 @@
         // The jQuery version on the window is the one we want to use
         jQuery = window.jQuery;
         $ = window.jQuery;
-        loadWidgetScripts(main);
+        //loadWidgetScripts(main);
+        main();
     }
 
     /******** Called once jQuery has loaded ******/
@@ -35,8 +36,8 @@
         jQuery = window.jQuery.noConflict(true);
         $ = jQuery;
         // Call our main function
-        //main();
-        loadWidgetScripts(main);
+        main();
+        //loadWidgetScripts(main);
     }
 /*
     function loadWidgetScripts(callback){
@@ -76,6 +77,9 @@
         //    });});
     }
 
+    function loadWidgetRenderScripts(){
+        loadScriptAjax('http://localhost:5004/static/widget/compiled_render_scripts.js');
+    }
     //function loadWidgetRenderScripts(){
     //    loadScriptAjax('http://localhost:5004/static/doaj/js/available_facetviews/public.fixedquerywidget.facetview.js');
     //    loadScriptAjax('http://localhost:5004/static/doaj/js/doaj.js');
@@ -85,7 +89,7 @@
     /******** Our main function ********/
     function main() {
         jQuery(document).ready(function($) {
-            $('#doaj-fixed-query-widget').load("http://localhost:5004/static/widget/fixed_query_body.html");//,loadWidgetRenderScripts);
+            $('#doaj-fixed-query-widget').load("http://localhost:5004/static/widget/fixed_query_body.html");
         });
     }
 })();

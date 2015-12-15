@@ -4,6 +4,7 @@ import json
 import requests
 from flask import Flask
 from flask.ext.login import LoginManager
+from flask.ext.cors import CORS
 
 from portality import settings
 from portality.error_handler import setup_error_logging
@@ -12,12 +13,13 @@ login_manager = LoginManager()
 
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__, static_url_path='')
     configure_app(app)
     if app.config['INITIALISE_INDEX']: initialise_index(app)
     setup_error_logging(app)
     setup_jinja(app)
     login_manager.init_app(app)
+    CORS(app)
     return app
 
 def configure_app(app):

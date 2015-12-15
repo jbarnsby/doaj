@@ -10,6 +10,7 @@ from portality.decorators import ssl_required, write_required, api_key_required
 from portality import blog
 from portality.formcontext import formcontext
 from portality.lcc import lcc_jstree
+from portality.decorators import crossdomain
 
 import json
 import os
@@ -276,6 +277,11 @@ def article_page(identifier=None):
             journal = journals[0]
 
     return render_template('doaj/article.html', article=article, journal=journal)
+
+@blueprint.route("/static/<path:path>")
+@crossdomain(origin='*')
+def static(path):
+    return send_file(os.path.join(app.config['STATIC_DIR'], path))
 
 ###############################################################
 ## The various static endpoints
