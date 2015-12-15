@@ -4966,3 +4966,36 @@ fv_view_reapplication = (function (resultobj) {
     };
     return that;
 })();
+
+var widget_fv_opts = {};
+
+// If options have been set using the Export method, use only those
+if (typeof SEARCH_CONFIGURED_OPTIONS != 'undefined') {
+    widget_fv_opts = optionsFromQuery(SEARCH_CONFIGURED_OPTIONS)
+}
+// Otherwise, use options provided.
+else if (typeof QUERY_OPTIONS != 'undefined') {
+    if (QUERY_OPTIONS.hasOwnProperty('query_string')) {
+        widget_fv_opts['q'] = QUERY_OPTIONS.query_string
+    }
+    if (QUERY_OPTIONS.hasOwnProperty('query_field')) {
+        widget_fv_opts['searchfield'] = QUERY_OPTIONS.query_field
+    }
+    if (QUERY_OPTIONS.hasOwnProperty('sort_field') && QUERY_OPTIONS.hasOwnProperty('sort_direction')) {
+        var sort_entry = {};
+        sort_entry[QUERY_OPTIONS.sort_field] = {order: QUERY_OPTIONS.sort_direction};
+        widget_fv_opts['sort'] = [sort_entry]
+    }
+    if (QUERY_OPTIONS.hasOwnProperty('search_operator')) {
+        widget_fv_opts['default_operator'] = QUERY_OPTIONS.search_operator
+    }
+    if (QUERY_OPTIONS.hasOwnProperty('search_type')) {
+        widget_fv_opts['predefined_filters'] = {_type: [QUERY_OPTIONS.search_type]};
+    }
+    if (QUERY_OPTIONS.hasOwnProperty('page_size')) {
+        widget_fv_opts['page_size'] = QUERY_OPTIONS.page_size
+    }
+    if (QUERY_OPTIONS.hasOwnProperty('page_from')) {
+        widget_fv_opts['from'] = QUERY_OPTIONS.page_from
+    }
+}
