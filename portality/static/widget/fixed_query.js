@@ -67,19 +67,20 @@
     }
 
     function loadWidgetScripts(callback){
-        loadScriptAjax('http://localhost:5004/static/portality/vendor/facetview2/es.js', function(){
-            loadScriptAjax('http://localhost:5004/static/portality/vendor/facetview2/bootstrap2.facetview.theme.js', function(){
-                loadScriptAjax('http://localhost:5004/static/doaj/js/doaj.facetview.theme.js', function(){
-                    loadScriptAjax('http://localhost:5004/static/portality/vendor/facetview2/jquery.facetview2.js', callback);
-                });
-            });});
+        loadScriptAjax('http://localhost:5004/static/widget/compiled.js', callback);
+        //loadScriptAjax('http://localhost:5004/static/portality/vendor/facetview2/es.js', function(){
+        //    loadScriptAjax('http://localhost:5004/static/portality/vendor/facetview2/bootstrap2.facetview.theme.js', function(){
+        //        loadScriptAjax('http://localhost:5004/static/doaj/js/doaj.facetview.theme.js', function(){
+        //            loadScriptAjax('http://localhost:5004/static/portality/vendor/facetview2/jquery.facetview2.js', callback);
+        //        });
+        //    });});
     }
 
-    function loadWidgetRenderScripts(){
-        loadScriptAjax('http://localhost:5004/static/doaj/js/available_facetviews/public.fixedquerywidget.facetview.js');
-        loadScriptAjax('http://localhost:5004/static/doaj/js/doaj.js');
-        loadScriptAjax('http://localhost:5004/static/doaj/js/facetview_results_render_callbacks.js')
-    }
+    //function loadWidgetRenderScripts(){
+    //    loadScriptAjax('http://localhost:5004/static/doaj/js/available_facetviews/public.fixedquerywidget.facetview.js');
+    //    loadScriptAjax('http://localhost:5004/static/doaj/js/doaj.js');
+    //    loadScriptAjax('http://localhost:5004/static/doaj/js/facetview_results_render_callbacks.js')
+    //}
 
     /******** Our main function ********/
     function main() {
